@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Euribor Caluclator</title>
+  </head>
+  <body>
+    <div class="head">
+      <div class="main-container">
+        <h2>Euribor Kalkulaator</h2>
+        <p style="font-style: italic; font-size: 12px"
+          >Kalkulatsioon toimub vastavalt sisestatud andmetele</p
+        >
+      </div>
+      <div class="input-container">
+        <!-- input -->
+        <div class="sum-container input-margin">
+          <h3>Laenusumma</h3>
+          <input type="number" name="loan" id="loan" />
+        </div>
+        <!-- end of input -->
+        <!-- input -->
+        <div class="date-container input-margin">
+          <h3>Tagasimakse Tähtaeg</h3>
+          <input
+            type="date"
+            name="date"
+            id="kpv"
+            placeholder="mm-dd-yyyy"
+            value="" />
+        </div>
+        <!-- end of input -->
+        <!-- input -->
+        <div class="interest-container input-margin">
+          <h3>Baas Intressimäär</h3>
+          <input
+            type="number"
+            min="0"
+            max="10"
+            step="0.01"
+            name="interest"
+            id="interest" />
+        </div>
+        <!-- end of input -->
+        <!-- input -->
+        <div class="euribor-container input-margin">
+          <h3>Euribor</h3>
+          <input
+            type="number"
+            min="0"
+            max="10"
+            step="0.01"
+            name="euribor"
+            id="euribor" />
+        </div>
+        <!-- end of input -->
+        <!-- input -->
+        <div class="submit-container input-margin">
+          <button class="submit">Arvuta</button>
+        </div>
+        <!-- end of input -->
+        <!-- input -->
+        <div class="payment-container">
+          <h3 class="uus-makse"></h3>
+          <p class="kuumakse"></p>
+        </div>
+        <!-- end of input -->
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
