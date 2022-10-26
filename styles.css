@@ -34,16 +34,18 @@ input:hover {
  margin: 20px;
 }
 .submit {
- padding: 5px 25px;
+ margin-top: 10px;
+ padding: 5px 5px;
+ width: 200px;
  border: none;
- border-radius: 10px;
+ border-radius: 8px;
  background-color: #3C153B;
  color: white;
  font-weight: 500;
  transition: 0.5s ease-in-out;
 }
 .submit:hover{
-  background-color: #623CEA;
+  background-color: #943591;
   color: white;
 }
 .kuumakse {
@@ -63,4 +65,12 @@ input {
 .uus-makse {
   font-weight: 500;
   width: 399px;
+}
+#loan, 
+#kpv,
+#interest,
+#euribor {
+  padding: 3px 5px;
+  width: 200px;
+  text-align: center;
 }
