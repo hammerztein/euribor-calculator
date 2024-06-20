@@ -5,9 +5,64 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./styles.css" />
-		<title>Euribor Caluclator</title>
+		<link rel="shortcut icon" href="./euro.png" type="image/x-icon" />
+		<title>Euribor Calculator</title>
 	</head>
 	<body>
-		<script arc=""></script>
+		<form action="" id="euribor-calculator">
+			<header>
+				<h1>Euribor Calculator</h1>
+				<p>Please fill all fields</p>
+			</header>
+			<div class="form-input">
+				<label for="loan"
+					>Remaining loan sum<span class="required" aria-hidden="true"
+						>*</span
+					></label
+				>
+				<input type="number" id="loan" name="loan" required />
+			</div>
+			<div class="form-input">
+				<label for="date"
+					>Loan repayment date<span class="required" aria-hidden="true"
+						>*</span
+					></label
+				>
+				<input type="date" id="date" name="date" required />
+			</div>
+			<div class="form-input">
+				<label for="interest"
+					>Base interest rate<span class="required" aria-hidden="true"
+						>*</span
+					></label
+				>
+				<input type="number" id="interest" name="interest" required />
+			</div>
+			<div class="form-input">
+				<label for="euribor"
+					>Current euribor rate<span class="required" aria-hidden="true"
+						>*</span
+					></label
+				>
+				<input type="number" id="euribor" name="euribor" required />
+			</div>
+			<button type="submit">Calculate</button>
+			<!-- Result -->
+			<div class="output hidden">
+				<p class="result">
+					<output for="loan date interest euribor" form="euribor-calculator"
+						>Your monthly payment will be</output
+					>
+				</p>
+				<div class="loan-difference">
+					<label for="current-payment">Current monthly payment:</label>
+					<input type="number" id="current-payment" name="current-payment" />
+					<output for="current-payment" id="new-payment"
+						>Your new monthly payment</output
+					>
+				</div>
+			</div>
+		</form>
+		<script src="./app.js"></script>
 	</body>
 </html>
