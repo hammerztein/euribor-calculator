@@ -31,7 +31,7 @@ button, input {
 
 /* Content */
 body {
-	height: 100vh;
+	min-height: 100vh;
 	line-height: 1.5;
 	font-family: Red-Hat-Display, sans-serif;
 	background: url("./img/background.svg");
@@ -121,3 +121,31 @@ body {
 .form-body button:hover {
 	background-color: var(--neutral-clr-desaturated);
 }
+
+.form-body .output {
+	margin-top: 18px;
+	background-color: var(--primary-clr-pale);
+	padding: 8px;
+	border-radius: 8px;
+	font-weight: 700;
+}
+
+.loan-difference {
+	display: flex;
+	align-items: center;
+	margin: 6px 0;
+}
+
+.loan-difference label[for="current-payment"] {
+	width: 50%;
+}
+
+.loan-difference input {
+	width: 50%;
+	outline: none;
+	border: none;
+	background-color: inherit;
+	border-bottom: 1px solid #000;
+	color: var(--text-clr-dark);
+}
+
