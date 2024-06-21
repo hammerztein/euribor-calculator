@@ -1,6 +1,39 @@
+/* Font */
+@font-face {
+	font-family: Red-Hat-Display;
+	src: url(./font/RedHatDisplay-VariableFont_wght.ttf) format('truetype');
+}
+
+/* Variables */
+:root {
+	--primary-clr-pale: #e0e8ff;
+	--primary-clr-bright: #3829e0;
+	--neutral-clr-desaturated: #7280a7;
+	--neutral-clr-dark: #1f2f56;
+}
+
 /* Reset */
-* {
+*,
+*::before,
+*::after {
  margin: 0;
  padding: 0;
  box-sizing: border-box;
+}
+
+button, input {
+	color: inherit;
+	font: inherit;
+}
+
+/* Content */
+body {
+	height: 100vh;
+	line-height: 1.5;
+	font-family: Red-Hat-Display, sans-serif;
+	background: url("./img/background.svg");
+	background-size: cover;
+	font-size: 16px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
