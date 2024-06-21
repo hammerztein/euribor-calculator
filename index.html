@@ -53,17 +53,18 @@
 				<!-- Result -->
 				<div class="output hidden">
 					<p class="result">
-						<output for="loan date interest euribor" form="euribor-calculator"
-							>Your monthly payment will be</output
-						>
+						Your monthly payment will be:
+						<output for="loan date interest euribor" form="euribor-calculator">
+						</output>
 					</p>
 					<div class="loan-difference">
-						<label for="current-payment">Current monthly payment:</label>
+						<label for="current-payment">Current payment:</label>
 						<input type="number" id="current-payment" name="current-payment" />
-						<output for="current-payment" id="new-payment"
-							>Your new monthly payment</output
-						>
 					</div>
+					<p>
+						Your new monthly payment:
+						<output for="current-payment" id="new-payment"></output>
+					</p>
 				</div>
 			</fieldset>
 		</form>
