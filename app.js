@@ -73,6 +73,21 @@ function calcMonthDifference(date) {
 		return monthlyDifference;
 	}
 }
+
+function calcMonthlyPayment() {
+	const data = gatherFormData();
+	const remainingMonths = calcMonthDifference(data.date);
+	const totalInterest = data.interest + data.euribor;
+	// Convert the annual total interest rate to a monthly nominal interest rate (decimal form)
+	const nominalInterest = totalInterest / 12 / 100;
+	// Calculate the monthly payment using the EMI formula:
+	const monthlyPayment =
+		(data.loan * nominalInterest * (1 + nominalInterest) ** remainingMonths) /
+		((1 + nominalInterest) ** remainingMonths - 1);
+	console.log(monthlyPayment.toFixed(2));
+	return monthlyPayment.toFixed(2);
+}
+
 // Form blur event delegation via capture
 form.addEventListener(
 	'blur',
@@ -83,6 +98,12 @@ form.addEventListener(
 	},
 	{ capture: true },
 );
+
+// Form submit event
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	calcMonthlyPayment();
+});
 
 calculateBtn.addEventListener('click', () => {
 	addAllValidationClasses();
