@@ -91,15 +91,36 @@ body {
 	border: 1px solid #bfbfbf;
 	border-radius: 5px;
 	font-size: 1.125rem;
+	transition: var(--transition);
 }
 
 .form-input label {
 	font-size: 1.125rem;
 }
 
-.form-input.validate input {
+/* Validation */
+.form-input input.validate:invalid {
 	border: 1px solid #FF6F61;
-	box-shadow: 0 0 4px #FF6F61;
+	box-shadow: 0 0 6px #FFA07A;
+}
+
+.form-input input.validate:valid {
+	border: 1px solid #1a8b27;
+	box-shadow: 0 0 6px #22bb33;
+}
+
+/* Focus States */
+.form-input input.validate:focus,
+.form-input input:focus {
+	border: 1px solid var(--neutral-clr-dark);
+	box-shadow: 0 0 6px var(--neutral-clr-dark);
+	transform: scale(1.01);
+}
+
+/* Remove User-Agent Focus */
+.form-input input:focus-visible,
+.form-input input.validate:focus-visible {
+	outline: none;
 }
 
 .form-body button {
@@ -148,4 +169,3 @@ body {
 	border-bottom: 1px solid #000;
 	color: var(--text-clr-dark);
 }
-
