@@ -6,6 +6,10 @@ As a homeowner that pays monthly mortgage installments, this was my first "app" 
 
 <small>The initial app design and logic implementation was done about 2 years ago when I just started to learn about front-end development, hence the missing commits.
 
+## Live Preview
+
+[Euribor-Calculator](https://hammerztein.github.io/euribor-calculator/)
+
 ## How To Use
 
 User-interface should be pretty self-explanatory, but just in case:
