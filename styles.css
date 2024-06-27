@@ -6,8 +6,6 @@
 
 /* Variables */
 :root {
-	--primary-clr-pale: #d8dfff;
-	--primary-clr-bright: #37e5ff;
 	--neutral-clr-desaturated: #15a6bb;
 	--neutral-clr-dark: #005c6a;
 	--text-clr-bright: #dedede;
@@ -101,12 +99,12 @@ body {
 /* Validation */
 .form-input input.validate:invalid {
 	border: 1px solid #FF6F61;
-	box-shadow: 0 0 6px #FFA07A;
+	box-shadow: 0 0 3px #FF6F61;
 }
 
 .form-input input.validate:valid {
 	border: 1px solid #1a8b27;
-	box-shadow: 0 0 6px #22bb33;
+	box-shadow: 0 0 3px #22bb33;
 }
 
 /* Focus States */
@@ -115,6 +113,11 @@ body {
 	border: 1px solid var(--neutral-clr-dark);
 	box-shadow: 0 0 6px var(--neutral-clr-dark);
 	transform: scale(1.01);
+}
+
+/* Placeholder pseudo-element */
+.form-input input::placeholder {
+	font-size: 1rem;
 }
 
 /* Remove User-Agent Focus */
@@ -144,10 +147,7 @@ body {
 }
 
 .form-body .output {
-	margin-top: 18px;
-	background-color: var(--primary-clr-pale);
-	padding: 8px;
-	border-radius: 8px;
+	margin-top: 22px;
 	font-weight: 700;
 }
 
@@ -163,7 +163,7 @@ body {
 .loan-difference {
 	display: flex;
 	align-items: center;
-	margin: 6px 0;
+	margin: 12px 0;
 }
 
 .loan-difference label[for="current-payment"] {
@@ -171,6 +171,7 @@ body {
 }
 
 .loan-difference input {
+	text-align: right;
 	width: 50%;
 	outline: none;
 	border: none;
