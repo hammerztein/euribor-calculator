@@ -1,6 +1,7 @@
 // DOM Variables
 const form = document.querySelector('#euribor-calculator');
 const calculateBtn = form.querySelector('button');
+const paymentDifferenceInput = form.querySelector('#current-payment');
 
 function addValidationClass(event) {
 	// Get either target event or element from argument
@@ -42,7 +43,7 @@ function validateInput(input) {
 	if (input.value === '') return 0;
 	// In case of number parse as float allowing decimal places
 	if (input['type'] === 'number') {
-		return parseFloat(input.value);
+		return Number(input.value);
 	} else {
 		// In case of date return a formatted date
 		return formatDate(new Date(input.value));
@@ -74,6 +75,7 @@ function calcMonthDifference(date) {
 	}
 }
 
+// Calculate monthly payments
 function calcMonthlyPayment() {
 	const data = gatherFormData();
 	const remainingMonths = calcMonthDifference(data.date);
@@ -94,6 +96,25 @@ function updateMonthlyOutput() {
 	displayContainer.classList.remove('hidden');
 	const monthlyDisplay = displayContainer.querySelector('.result output');
 	monthlyDisplay.textContent = monthlyPayment;
+	// If user has filled current payment input, recalculate the new payment
+	if (paymentDifferenceInput.value !== '') {
+		updateNewMonthlyOutput(paymentDifferenceInput);
+	}
+}
+
+// Update differences between monthly payments in output
+function calcPaymentDifference(event) {
+	const currentPayment = event.target || event;
+	const currentPaymentNumber = Number(currentPayment.value);
+	const newPayment = form.querySelector('.result output').textContent;
+	return parseFloat(currentPaymentNumber - newPayment).toFixed(2);
+}
+
+// Update new monthly payment display
+function updateNewMonthlyOutput(event) {
+	const newMonthlyPayment = calcPaymentDifference(event);
+	const newMonthlyDisplay = form.querySelector('#new-payment');
+	newMonthlyDisplay.textContent = newMonthlyPayment;
 }
 
 // Form blur event delegation via capture
@@ -113,6 +134,10 @@ form.addEventListener('submit', (e) => {
 	updateMonthlyOutput();
 });
 
+// Calculate button event
 calculateBtn.addEventListener('click', () => {
 	addAllValidationClasses();
 });
+
+// Payment difference event
+paymentDifferenceInput.addEventListener('input', updateNewMonthlyOutput);
