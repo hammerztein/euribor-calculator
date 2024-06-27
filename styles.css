@@ -27,9 +27,15 @@ button, input {
 	font: inherit;
 }
 
+/* Safari support */
+input[type="date"] {
+	-webkit-appearance: textfield;
+	width: 100%;
+}
+
 /* Content */
 body {
-	min-height: 100vh;
+	min-height: 100dvh;
 	line-height: 1.5;
 	font-family: Red-Hat-Display, sans-serif;
 	background: url("./img/background.svg");
