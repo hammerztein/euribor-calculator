@@ -107,7 +107,11 @@ function calcPaymentDifference(event) {
 	const currentPayment = event.target || event;
 	const currentPaymentNumber = Number(currentPayment.value);
 	const newPayment = form.querySelector('.result output').textContent;
-	return parseFloat(currentPaymentNumber - newPayment).toFixed(2);
+	if (currentPaymentNumber > 0) {
+		return parseFloat(currentPaymentNumber - newPayment).toFixed(2);
+	} else {
+		return;
+	}
 }
 
 // Update new monthly payment display
