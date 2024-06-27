@@ -98,6 +98,12 @@ body {
 	transition: var(--transition);
 }
 
+/* Safari support  */
+.form-input input[type="date"] {
+	-webkit-appearance: none;
+	min-width: 289px;
+	min-height: 37px;
+}
 .form-input label {
 	font-size: 1.125rem;
 }
