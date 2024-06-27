@@ -84,8 +84,16 @@ function calcMonthlyPayment() {
 	const monthlyPayment =
 		(data.loan * nominalInterest * (1 + nominalInterest) ** remainingMonths) /
 		((1 + nominalInterest) ** remainingMonths - 1);
-	console.log(monthlyPayment.toFixed(2));
-	return monthlyPayment.toFixed(2);
+	return parseFloat(monthlyPayment.toFixed(2));
+}
+
+// Update output
+function updateMonthlyOutput() {
+	const monthlyPayment = calcMonthlyPayment();
+	const displayContainer = form.querySelector('.output');
+	displayContainer.classList.remove('hidden');
+	const monthlyDisplay = displayContainer.querySelector('.result output');
+	monthlyDisplay.textContent = monthlyPayment;
 }
 
 // Form blur event delegation via capture
@@ -102,7 +110,7 @@ form.addEventListener(
 // Form submit event
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
-	calcMonthlyPayment();
+	updateMonthlyOutput();
 });
 
 calculateBtn.addEventListener('click', () => {
