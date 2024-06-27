@@ -23,7 +23,13 @@
 							>*</span
 						></label
 					>
-					<input type="number" id="loan" name="loan" required step="any" />
+					<input
+						type="number"
+						id="loan"
+						name="loan"
+						min="0"
+						required
+						step="any" />
 				</div>
 				<div class="form-input">
 					<label for="date"
@@ -31,7 +37,7 @@
 							>*</span
 						></label
 					>
-					<input type="date" id="date" name="date" required />
+					<input type="date" id="date" name="date" max="2070-12-31" required />
 				</div>
 				<div class="form-input">
 					<label for="interest"
@@ -43,6 +49,7 @@
 						type="number"
 						id="interest"
 						name="interest"
+						min="0"
 						required
 						step="any" />
 				</div>
@@ -56,6 +63,7 @@
 						type="number"
 						id="euribor"
 						name="euribor"
+						min="0"
 						required
 						step="any" />
 				</div>
@@ -73,6 +81,7 @@
 							type="number"
 							id="current-payment"
 							name="current-payment"
+							min="0"
 							step="any" />
 					</div>
 					<p class="result">
