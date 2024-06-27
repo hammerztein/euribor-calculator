@@ -29,6 +29,11 @@ User-interface should be pretty self-explanatory, but just in case:
 - CSS pseudo-classes and pseudo-elements
 - Flexbox design
 
+## To Do
+
+- Add check for infinity or negative in monthly payments
+- Add check for date so that it cant be less than at least 2 months from today.
+
 ## Acknowledgements
 
 The design idea for the UI came from [Frontend Mentor challange](https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj).
