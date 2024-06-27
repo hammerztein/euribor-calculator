@@ -151,6 +151,15 @@ body {
 	font-weight: 700;
 }
 
+.form-body .output.hidden {
+	display: none;
+}
+
+.output .result {
+	display: flex;
+	justify-content: space-between;
+}
+
 .loan-difference {
 	display: flex;
 	align-items: center;
