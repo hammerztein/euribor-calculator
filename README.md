@@ -4,7 +4,11 @@ As a homeowner that pays monthly mortgage installments, this was my first "app" 
 
 <small>**Update**
 
-<small>The initial app design and logic implementation was done about 2 years ago when I just started to learn about front-end development, hence the missing commits.
+<small>The initial app design and logic (_and Estonian language_) implementation was done about 2 years ago when I just started to learn about front-end development, hence the missing commits.
+
+Old Design
+
+![Old App Design](https://i.imgur.com/LvB4yhj.png)
 
 ## Live Preview
 
@@ -28,14 +32,12 @@ User-interface should be pretty self-explanatory, but just in case:
 - Semantic HTML5
 - CSS pseudo-classes and pseudo-elements
 - Flexbox design
-
-## To Do
-
-- Add check for infinity or negative in monthly payments
-- Add check for date so that it cant be less than at least 2 months from today.
+- Pikaday date picker
 
 ## Acknowledgements
 
 The design idea for the UI came from [Frontend Mentor challange](https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj).
 
 Form header image is from [pexels.com](https://www.pexels.com/) by a user [@gabby-k](https://www.pexels.com/@gabby-k/)
+
+Custom date picker library is from [Pikaday repo](https://github.com/Pikaday/Pikaday)
