@@ -74,26 +74,34 @@ function gatherFormData() {
 	const formData = {};
 	const formInputs = form.querySelectorAll('.form-input input');
 	formInputs.forEach((input) => {
-		formData[input['name']] = validateInput(input);
+		formData[input['name']] = input.value;
 	});
 	return formData;
 }
 
 // Validate inputs
-function validateInput(input) {
-	// In case of empty field return 0 so calculation would return 0
-	if (input.value === '') return 0;
-	// In case of number parse as float allowing decimal places
-	if (input['type'] === 'number') {
-		return Number(input.value);
-	} else {
-		// Parse string date into a JS date object
-		return new Date(parseDate(input.value));
+function validateInput(formData) {
+	// Destructure object
+	const { loan, interest, euribor, date } = formData;
+	if (loan <= 0 || isNaN(loan) || !loan) {
+		return false;
 	}
+	if (interest < 0 || isNaN(interest) || !interest) {
+		return false;
+	}
+	if (euribor < 0 || isNaN(euribor) || !euribor) {
+		return false;
+	}
+	if (!parseDate(date) || !date) {
+		return false;
+	}
+	return true;
 }
+
 // Calculate month difference between today and repayment date
 function calcMonthDifference(date) {
 	const today = new Date();
+	date = new Date(date);
 	return (
 		date.getMonth() -
 		today.getMonth() +
@@ -102,26 +110,29 @@ function calcMonthDifference(date) {
 }
 
 // Calculate monthly payments
-function calcMonthlyPayment() {
-	const data = gatherFormData();
-	const remainingMonths = calcMonthDifference(data.date);
-	const totalInterest = data.interest + data.euribor;
+function calcMonthlyPayment(formData) {
+	// Destructure object
+	const { loan, interest, euribor, date } = formData;
+	const remainingMonths = calcMonthDifference(parseDate(date));
+	const totalInterest = Number(interest) + Number(euribor);
 	// Convert the annual total interest rate to a monthly nominal interest rate (decimal form)
 	const nominalInterest = totalInterest / 12 / 100;
 	// Calculate the monthly payment using the EMI formula:
 	const monthlyPayment =
-		(data.loan * nominalInterest * (1 + nominalInterest) ** remainingMonths) /
+		(loan * nominalInterest * (1 + nominalInterest) ** remainingMonths) /
 		((1 + nominalInterest) ** remainingMonths - 1);
 	return parseFloat(monthlyPayment.toFixed(2));
 }
 
 // Update output
 function updateMonthlyOutput() {
-	const monthlyPayment = calcMonthlyPayment();
+	const formData = gatherFormData();
+	if (!validateInput(formData)) return;
+	const monthlyPayment = calcMonthlyPayment(formData);
 	const displayContainer = form.querySelector('.output');
-	displayContainer.classList.remove('hidden');
 	const monthlyDisplay = displayContainer.querySelector('.result output');
 	monthlyDisplay.textContent = monthlyPayment;
+	paymentDifferenceInput.removeAttribute('disabled');
 	// If user has filled current payment input, recalculate the new payment
 	if (paymentDifferenceInput.value !== '') {
 		updateNewMonthlyOutput(paymentDifferenceInput);
