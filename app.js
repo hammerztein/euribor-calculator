@@ -2,6 +2,48 @@
 const form = document.querySelector('#euribor-calculator');
 const calculateBtn = form.querySelector('button');
 const paymentDifferenceInput = form.querySelector('#current-payment');
+// Date picker input
+const datePicker = new Pikaday({
+	field: form.querySelector('#date'),
+	toString: formatDisplayDate,
+	parse: parseDate,
+	minDate: setMinMaxDate()[0],
+	maxDate: setMinMaxDate[1],
+	yearRange: [
+		setMinMaxDate()[0].getFullYear(),
+		setMinMaxDate()[1].getFullYear(),
+	],
+	defaultDate: setMinMaxDate()[0],
+});
+
+// Set minimum date for the datepicker
+function setMinMaxDate() {
+	const today = new Date();
+	const minimumDate = new Date();
+	minimumDate.setMonth(today.getMonth() + 6);
+	const maximumDate = new Date();
+	maximumDate.setFullYear(today.getFullYear() + 60);
+	return [minimumDate, maximumDate];
+}
+
+// Function to format a display date as DD-MM-YYYY
+function formatDisplayDate(date) {
+	const day = String(date.getDate()).padStart(2, '0');
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const year = date.getFullYear();
+	return `${day}-${month}-${year}`;
+}
+
+// Function to parse a date string in DD-MM-YYYY format
+function parseDate(dateString) {
+	const parts = dateString.split('-');
+	if (parts.length !== 3) return null; // Invalid date format
+	const day = parseInt(parts[0], 10);
+	const month = parseInt(parts[1], 10) - 1;
+	const year = parseInt(parts[2], 10);
+	if (isNaN(day) || isNaN(month) || isNaN(year)) return null; // Invalid date parts
+	return new Date(year, month, day);
+}
 
 function addValidationClass(event) {
 	// Get either target event or element from argument
@@ -58,21 +100,12 @@ function formatDate(date) {
 		year: date.getFullYear(),
 	};
 }
-
 // Calculate month difference between today and repayment date
 function calcMonthDifference(date) {
 	const today = new Date();
 	const monthlyDifference =
 		date.month - today.getMonth() + 12 * (date.year - today.getFullYear());
-	/*
-		If repayment day is earlier than todays date
-		subtract 1 since we payed for current month
-	*/
-	if (date.day <= today.getDate()) {
-		return monthlyDifference - 1;
-	} else {
-		return monthlyDifference;
-	}
+	return monthlyDifference;
 }
 
 // Calculate monthly payments
