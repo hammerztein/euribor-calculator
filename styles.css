@@ -49,7 +49,7 @@ body {
 #euribor-calculator {
 	border-radius: 16px;
 	overflow: hidden;
-	width: min(400px, 100%);
+	width: min(450px, 100%);
 	background-color: #f5f5f5;
 	box-shadow: 2px 3px 10px 3px rgba(0,0,0,0.3);
 }
@@ -107,6 +107,17 @@ body {
 .form-input input.validate:invalid {
 	border: 1px solid #FF6F61;
 	box-shadow: 0 0 3px #FF6F61;
+}
+
+span.input-error {
+	display: none;
+	font-size: 0.9rem;
+	color: #FF6F61;
+	margin-left: 4px;
+}
+
+.form-input input.validate:invalid + span.input-error {
+	display: block;
 }
 
 .form-input input.validate:valid {
@@ -167,7 +178,17 @@ body {
 
 .form-result .loan-difference {
 	display: flex;
-	width: 100%;
-	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
 	margin: 12px 0;
+}
+
+.form-result .loan-difference input {
+	max-width: 50%;
+}
+
+.form-result .loan-difference input:disabled {
+	background-color: #e5e5e5;
+	border-color: #ccc;
+	cursor: not-allowed;
 }
