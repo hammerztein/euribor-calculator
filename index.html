@@ -4,8 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<link rel="stylesheet" href="./styles.css" />
 		<link rel="shortcut icon" href="./img/euro.png" type="image/x-icon" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css" />
 		<title>Euribor Calculator</title>
 	</head>
 	<body>
@@ -38,7 +43,12 @@
 							>*</span
 						></label
 					>
-					<input type="date" id="date" name="date" max="2070-12-31" required />
+					<input
+						type="text"
+						id="date"
+						name="date"
+						placeholder="MM-DD-YYYY"
+						required />
 				</div>
 				<div class="form-input">
 					<label for="interest"
@@ -94,6 +104,7 @@
 				</div>
 			</fieldset>
 		</form>
+		<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 		<script src="./app.js"></script>
 	</body>
 </html>
