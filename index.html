@@ -81,10 +81,14 @@
 						placeholder="3.9" />
 				</div>
 				<button type="submit">Calculate</button>
+			</fieldset>
+			<fieldset class="form-result">
+				<legend>Monthly Payments</legend>
+
 				<!-- Result -->
-				<div class="output hidden">
+				<div class="output">
 					<p class="result">
-						Your monthly payment will be:
+						Monthly payment:
 						<output for="loan date interest euribor" form="euribor-calculator">
 						</output>
 					</p>
@@ -98,7 +102,7 @@
 							step="any" />
 					</div>
 					<p class="result">
-						Your new monthly payment:
+						New monthly payment:
 						<output for="current-payment" id="new-payment"></output>
 					</p>
 				</div>
