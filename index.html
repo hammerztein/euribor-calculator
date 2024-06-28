@@ -36,6 +36,7 @@
 						required
 						step="any"
 						placeholder="100000" />
+					<span class="input-error">Please insert a valid loan sum</span>
 				</div>
 				<div class="form-input">
 					<label for="date"
@@ -47,8 +48,9 @@
 						type="text"
 						id="date"
 						name="date"
-						placeholder="MM-DD-YYYY"
+						placeholder="DD-MM-YYYY"
 						required />
+					<span class="input-error">Please insert a valid date</span>
 				</div>
 				<div class="form-input">
 					<label for="interest"
@@ -64,6 +66,9 @@
 						required
 						step="any"
 						placeholder="2.1" />
+					<span class="input-error"
+						>Please insert a valid base interest rate</span
+					>
 				</div>
 				<div class="form-input">
 					<label for="euribor"
@@ -79,12 +84,12 @@
 						required
 						step="any"
 						placeholder="3.9" />
+					<span class="input-error">Please insert a valid euribor rate</span>
 				</div>
 				<button type="submit">Calculate</button>
 			</fieldset>
 			<fieldset class="form-result">
 				<legend>Monthly Payments</legend>
-
 				<!-- Result -->
 				<div class="output">
 					<p class="result">
@@ -102,7 +107,7 @@
 							step="any" />
 					</div>
 					<p class="result">
-						New monthly payment:
+						Payment Difference:
 						<output for="current-payment" id="new-payment"></output>
 					</p>
 				</div>
