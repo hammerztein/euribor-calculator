@@ -87,25 +87,18 @@ function validateInput(input) {
 	if (input['type'] === 'number') {
 		return Number(input.value);
 	} else {
-		// In case of date return a formatted date
-		return formatDate(new Date(input.value));
+		// Parse string date into a JS date object
+		return new Date(parseDate(input.value));
 	}
-}
-
-// Format date
-function formatDate(date) {
-	return {
-		day: date.getDate(),
-		month: date.getMonth(),
-		year: date.getFullYear(),
-	};
 }
 // Calculate month difference between today and repayment date
 function calcMonthDifference(date) {
 	const today = new Date();
-	const monthlyDifference =
-		date.month - today.getMonth() + 12 * (date.year - today.getFullYear());
-	return monthlyDifference;
+	return (
+		date.getMonth() -
+		today.getMonth() +
+		12 * (date.getFullYear() - today.getFullYear())
+	);
 }
 
 // Calculate monthly payments
